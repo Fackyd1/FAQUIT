@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 import artistsRoutes from './routes/artists.routes.js';
@@ -63,6 +64,15 @@ app.use('/api/socials', socialsRoutes);
 app.use('/api/admin', adminRoutes);
 
 app.get('/api/health', (_req, res) => res.json({ ok: true }));
+
+// Serve built client when available (production on Render)
+const clientDist = path.join(__dirname, '..', 'client', 'dist');
+if (fs.existsSync(clientDist)) {
+  app.use(express.static(clientDist));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientDist, 'index.html'));
+  });
+}
 
 app.use((err, _req, res, _next) => {
   console.error(err);
