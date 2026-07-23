@@ -1,0 +1,13 @@
+{
+  "name": "faquit-client",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vite": "^5.4.10"
+  }
+}
