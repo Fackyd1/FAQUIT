@@ -1,6 +1,6 @@
 import './style.css';
 import { API_CONFIG } from './config.js';
-import { MusicPlayer } from './components/MusicPlayer.js';
+import { CVViewer } from './components/CVViewer.js';
 import { ReleaseCard } from './components/ReleaseCard.js';
 import { Gallery } from './components/Gallery.js';
 import { Navigation } from './components/Navigation.js';
@@ -77,8 +77,8 @@ function render() {
             <a href="https://github.com/Fackyd1/FAQUIT" target="_blank" rel="noreferrer" class="secondary-link">GitHub</a>
           </div>
         </section>
-        <section class="hero-music reveal">
-          ${MusicPlayer({ songs: site.songs, title: site.title })}
+        <section class="hero-cv reveal">
+          ${CVViewer()}
         </section>
       </main>
 
@@ -122,26 +122,26 @@ function render() {
 
   // Attach CV button handler: open modal with PDF viewer
   function openCV() {
-    // Create overlay
-    const overlay = document.createElement('div');
-    overlay.className = 'cv-overlay';
-    overlay.innerHTML = `
-      <div class="cv-frame" role="dialog" aria-modal="true">
-        <button class="cv-close" aria-label="Close CV">✕</button>
-        <iframe src="/cv" title="Gaspar CV 2026"></iframe>
-      </div>
-    `;
-    document.body.appendChild(overlay);
+    const modal = document.getElementById('cvModal');
+    if (modal) {
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
 
-    function close() {
-      overlay.remove();
-      document.removeEventListener('keydown', escHandler);
+      function close() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', escHandler);
+      }
+
+      function escHandler(e) { if (e.key === 'Escape') close(); }
+      
+      const closeBtn = modal.querySelector('.close-cv-btn');
+      const backdrop = modal.querySelector('.cv-modal-backdrop');
+      
+      closeBtn.addEventListener('click', close, { once: true });
+      backdrop.addEventListener('click', close, { once: true });
+      document.addEventListener('keydown', escHandler);
     }
-
-    function escHandler(e) { if (e.key === 'Escape') close(); }
-    overlay.querySelector('.cv-close').addEventListener('click', close);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
-    document.addEventListener('keydown', escHandler);
   }
 
   const cvBtn = document.querySelector('.open-cv-btn');
