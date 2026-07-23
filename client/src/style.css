@@ -190,6 +190,18 @@ h1 {
   box-shadow: 0 20px 45px rgba(0,0,0,0.26);
 }
 .release-card { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+.release-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: all .3s ease;
+}
+.release-card-link:hover .release-card {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.24);
+  transform: translateY(-4px);
+  box-shadow: 0 28px 55px rgba(0,0,0,0.36), 0 0 40px rgba(83, 218, 255, 0.16);
+}
 .release-meta p { opacity: .74; margin: 6px 0 0; }
 .player-card { display: grid; gap: 14px; }
 .player-header { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
