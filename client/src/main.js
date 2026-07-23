@@ -119,6 +119,33 @@ function render() {
       element.classList.add('is-visible');
     });
   });
+
+  // Attach CV button handler: open modal with PDF viewer
+  function openCV() {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'cv-overlay';
+    overlay.innerHTML = `
+      <div class="cv-frame" role="dialog" aria-modal="true">
+        <button class="cv-close" aria-label="Close CV">✕</button>
+        <iframe src="/cv" title="Gaspar CV 2026"></iframe>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    function close() {
+      overlay.remove();
+      document.removeEventListener('keydown', escHandler);
+    }
+
+    function escHandler(e) { if (e.key === 'Escape') close(); }
+    overlay.querySelector('.cv-close').addEventListener('click', close);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', escHandler);
+  }
+
+  const cvBtn = document.querySelector('.open-cv-btn');
+  if (cvBtn) cvBtn.addEventListener('click', openCV);
 }
 
 loadData();

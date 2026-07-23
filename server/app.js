@@ -93,6 +93,16 @@ if (fs.existsSync(clientDist)) {
   });
 
   app.use(express.static(clientDist));
+  // Serve CV PDF if present in client folder
+  app.get('/cv', (req, res) => {
+    const pdfPath = path.join(__dirname, '..', 'client', 'Gaspar CV 2026 .pdf');
+    if (fs.existsSync(pdfPath)) {
+      res.setHeader('Content-Type', 'application/pdf');
+      res.sendFile(pdfPath);
+      return;
+    }
+    res.status(404).send('CV not found');
+  });
   app.get('*', (req, res) => {
     const indexPath = path.join(clientDist, 'index.html');
     try {

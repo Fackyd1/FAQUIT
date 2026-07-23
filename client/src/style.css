@@ -227,3 +227,36 @@ h1 {
   .hero-panel { grid-template-columns: 1fr; }
   .release-card { flex-direction: column; }
 }
+
+/* CV modal and button */
+.open-cv-btn {
+  background: linear-gradient(135deg, var(--punk-cyan), var(--punk-violet));
+  color: #081018;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+}
+.open-cv-btn:hover { transform: translateY(-2px); }
+.cv-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(4,1,10,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+.cv-frame {
+  width: min(1000px, 92%);
+  height: min(800px, 86%);
+  background: rgba(255,255,255,0.02);
+  border-radius: 16px;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+  transform: perspective(1200px) rotateX(6deg) rotateY(-6deg) translateZ(0);
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.cv-frame iframe { width: 100%; height: 100%; border: 0; background: transparent; }
+.cv-close { position: absolute; top: 18px; right: 18px; background: rgba(255,255,255,0.06); border: none; padding: 8px 10px; border-radius: 8px; cursor: pointer; }

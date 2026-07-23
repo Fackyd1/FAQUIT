@@ -1,0 +1,4 @@
+cd /d C:\Users\gaspu\faquit
+git add -A
+git commit -m "fix: serve /FAQUIT assets and SPA fallback; make vite base configurable"
+git push origin main

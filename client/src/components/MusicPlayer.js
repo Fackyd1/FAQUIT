@@ -15,6 +15,7 @@ export function MusicPlayer({ songs, title }) {
           <button type="button">⏮</button>
           <button type="button">▶</button>
           <button type="button">⏭</button>
+          <button type="button" class="open-cv-btn" aria-label="Open CV">📄 CV</button>
         </div>
       </div>
       <div>${source}</div>
