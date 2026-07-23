@@ -1,9 +1,12 @@
 export function CVViewer() {
   return `
     <div class="cv-container">
-      <object class="cv-object" data="./Gaspar CV 2026 .pdf" type="application/pdf">
-        <embed src="./Gaspar CV 2026 .pdf" type="application/pdf" />
-      </object>
+      <iframe 
+        class="cv-iframe" 
+        src="/cv#toolbar=1&navpanes=0&scrollbar=1" 
+        title="Curriculum Vitae"
+        allow="fullscreen">
+      </iframe>
     </div>
   `;
 }
