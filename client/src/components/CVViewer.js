@@ -15,7 +15,9 @@ export function CVViewer() {
       <div class="cv-modal-backdrop"></div>
       <div class="cv-modal-content">
         <button type="button" class="close-cv-btn" aria-label="Close CV">✕</button>
-        <iframe class="cv-iframe" src="./Gaspar%20CV%202026%20.pdf" title="Curriculum Vitae"></iframe>
+        <object class="cv-object" data="./Gaspar CV 2026 .pdf" type="application/pdf">
+          <embed src="./Gaspar CV 2026 .pdf" type="application/pdf" />
+        </object>
       </div>
     </div>
   `;

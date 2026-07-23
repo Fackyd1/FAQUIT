@@ -353,6 +353,14 @@ h1 {
   background: transparent;
 }
 
+.cv-object,
+.cv-object embed {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

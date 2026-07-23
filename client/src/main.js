@@ -121,7 +121,8 @@ function render() {
   });
 
   // Attach CV button handler: open modal with PDF viewer
-  function openCV() {
+  function openCV(e) {
+    e.preventDefault();
     const modal = document.getElementById('cvModal');
     if (modal) {
       modal.classList.add('active');
@@ -138,14 +139,19 @@ function render() {
       const closeBtn = modal.querySelector('.close-cv-btn');
       const backdrop = modal.querySelector('.cv-modal-backdrop');
       
-      closeBtn.addEventListener('click', close, { once: true });
-      backdrop.addEventListener('click', close, { once: true });
+      closeBtn.addEventListener('click', close);
+      backdrop.addEventListener('click', close);
       document.addEventListener('keydown', escHandler);
     }
   }
 
-  const cvBtn = document.querySelector('.open-cv-btn');
-  if (cvBtn) cvBtn.addEventListener('click', openCV);
+  // Wait a bit to ensure DOM is fully ready
+  setTimeout(() => {
+    const cvBtn = document.querySelector('.open-cv-btn');
+    if (cvBtn) {
+      cvBtn.addEventListener('click', openCV);
+    }
+  }, 100);
 }
 
 loadData();
