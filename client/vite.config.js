@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite';
 
+const base = process.env.VITE_BASE || '/';
+
 export default defineConfig({
-  base: '/FAQUIT/',
+  base,
   server: {
     host: '127.0.0.1',
     port: 5173,

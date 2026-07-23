@@ -68,9 +68,42 @@ app.get('/api/health', (_req, res) => res.json({ ok: true }));
 // Serve built client when available (production on Render)
 const clientDist = path.join(__dirname, '..', 'client', 'dist');
 if (fs.existsSync(clientDist)) {
+  // Redirect requests hitting the repository subpath to the root
+  app.get('/FAQUIT', (_req, res) => res.redirect(301, '/'));
+  // Serve assets that were built with /FAQUIT/ base directly from the assets folder
+  app.use('/FAQUIT/assets', express.static(path.join(clientDist, 'assets')));
+  // Serve the SPA index for any other /FAQUIT/* path, rewriting asset paths inside
+  app.get('/FAQUIT/*', (_req, res) => {
+    const indexPath = path.join(clientDist, 'index.html');
+    try {
+      let html = fs.readFileSync(indexPath, 'utf8');
+      html = html.replace(/\/(FAQUIT)\//g, '/');
+      res.setHeader('Content-Type', 'text/html');
+      res.send(html);
+    } catch (err) {
+      res.sendFile(indexPath);
+    }
+  });
+  // Support deployments where built assets were generated with a /FAQUIT/ base
+  app.use((req, _res, next) => {
+    if (req.url.startsWith('/FAQUIT/')) {
+      req.url = req.url.replace('/FAQUIT', '') || '/';
+    }
+    next();
+  });
+
   app.use(express.static(clientDist));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(clientDist, 'index.html'));
+    const indexPath = path.join(clientDist, 'index.html');
+    try {
+      let html = fs.readFileSync(indexPath, 'utf8');
+      // If index.html was built with /FAQUIT/ base, rewrite asset paths to root
+      html = html.replace(/\/(FAQUIT)\//g, '/');
+      res.setHeader('Content-Type', 'text/html');
+      res.send(html);
+    } catch (err) {
+      res.sendFile(indexPath);
+    }
   });
 }
 
