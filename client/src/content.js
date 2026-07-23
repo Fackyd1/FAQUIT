@@ -2,12 +2,6 @@ const createSvg = (label, accent) => `data:image/svg+xml;utf8,${encodeURICompone
 
 const defaultReleases = [
   {
-    title: 'Nebula Bloom',
-    description: 'An atmospheric release that blends cinematic synths and intimate vocals.',
-    release_type: 'EP',
-    release_date: '2026'
-  },
-  {
     title: 'Velvet Static',
     description: 'A nocturnal release designed for late-night listening and motion-driven visuals.',
     release_type: 'Single',
