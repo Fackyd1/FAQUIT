@@ -228,7 +228,7 @@ h1 {
   .release-card { flex-direction: column; }
 }
 
-/* CV Viewer Styles */
+/* CV Content Styles */
 .hero-cv {
   display: flex;
   align-items: center;
@@ -236,23 +236,130 @@ h1 {
   width: 100%;
 }
 
-.cv-container {
+.cv-content {
   width: 100%;
-  height: 600px;
   background: rgba(255,255,255,.07);
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 24px;
-  padding: 0;
+  padding: 32px;
   backdrop-filter: blur(16px);
   box-shadow: 0 20px 45px rgba(0,0,0,0.26);
-  overflow: hidden;
+  overflow-y: auto;
+  max-height: 600px;
+  scroll-behavior: smooth;
 }
 
-.cv-iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: transparent;
+.cv-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cv-content::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.06);
+  border-radius: 4px;
+}
+
+.cv-content::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--punk-cyan), var(--punk-violet));
+  border-radius: 4px;
+}
+
+.cv-section {
+  margin-bottom: 28px;
+}
+
+.cv-section:last-child {
+  margin-bottom: 0;
+}
+
+.cv-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .32em;
+  font-size: .72rem;
+  opacity: .84;
+  margin: 0 0 12px;
+  color: var(--punk-cyan);
+  font-family: 'Arial Black', 'Impact', 'Segoe UI', sans-serif;
+  font-weight: 800;
+}
+
+.cv-highlight {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--punk-pink);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  text-shadow: 0 0 12px rgba(255,95,162,0.24);
+}
+
+.cv-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.cv-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.cv-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.cv-role {
+  font-weight: 700;
+  color: #f0eaff;
+  font-size: .95rem;
+  letter-spacing: .08em;
+}
+
+.cv-date {
+  font-size: .75rem;
+  color: var(--punk-cyan);
+  opacity: .8;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.cv-company {
+  font-size: .85rem;
+  color: #d8d2e7;
+  margin: 0;
+  opacity: .8;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.skill-tag {
+  background: linear-gradient(135deg, rgba(83, 218, 255, 0.12), rgba(123, 92, 255, 0.12));
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--punk-cyan);
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: all .3s ease;
+  cursor: default;
+}
+
+.skill-tag:hover {
+  background: linear-gradient(135deg, rgba(83, 218, 255, 0.24), rgba(123, 92, 255, 0.24));
+  border-color: rgba(255,255,255,0.24);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(83, 218, 255, 0.16);
 }
 
 @keyframes fadeIn {
