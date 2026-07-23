@@ -233,130 +233,27 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
-.cv-card {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-  justify-content: center;
+.cv-container {
+  width: 100%;
+  height: 100%;
+  min-height: 600px;
   background: rgba(255,255,255,.07);
   border: 1px solid rgba(255,255,255,.12);
   border-radius: 24px;
-  padding: 40px;
+  padding: 0;
   backdrop-filter: blur(16px);
   box-shadow: 0 20px 45px rgba(0,0,0,0.26);
-  text-align: center;
-  width: 100%;
-  max-width: 400px;
-  transition: all .3s ease;
-}
-
-.cv-header {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.cv-header h3 {
-  margin: 0;
-  font-size: 1.8rem;
-}
-
-.open-cv-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, var(--punk-cyan), var(--punk-violet));
-  color: #081018;
-  padding: 14px 24px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: .9rem;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  transition: all .3s ease;
-  box-shadow: 0 8px 24px rgba(83, 218, 255, 0.24);
-}
-
-.open-cv-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(83, 218, 255, 0.36);
-}
-
-.cv-icon {
-  font-size: 1.2rem;
-}
-
-/* CV Modal */
-.cv-modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  animation: fadeIn .3s ease;
-}
-
-.cv-modal.active {
-  display: flex;
-}
-
-.cv-modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(4,1,10,0.85);
-  backdrop-filter: blur(4px);
-}
-
-.cv-modal-content {
-  position: relative;
-  width: min(95vw, 1000px);
-  height: min(90vh, 800px);
-  background: rgba(20, 10, 30, 0.95);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 24px;
-  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
-  transform: perspective(1200px) rotateX(6deg) rotateY(-6deg);
   overflow: hidden;
-  animation: popIn .3s ease;
-}
-
-.close-cv-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: rgba(255,255,255,0.06);
-  color: #f7f4ff;
-  border: 1px solid rgba(255,255,255,0.12);
-  padding: 10px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.2rem;
-  transition: all .2s ease;
-  z-index: 10001;
-}
-
-.close-cv-btn:hover {
-  background: rgba(255,255,255,0.12);
-  transform: rotate(90deg);
-}
-
-.cv-iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: transparent;
 }
 
 .cv-object,
 .cv-object embed {
   width: 100%;
   height: 100%;
+  min-height: 600px;
   border: 0;
   background: transparent;
 }

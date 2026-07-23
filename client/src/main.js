@@ -119,39 +119,6 @@ function render() {
       element.classList.add('is-visible');
     });
   });
-
-  // Attach CV button handler: open modal with PDF viewer
-  function openCV(e) {
-    e.preventDefault();
-    const modal = document.getElementById('cvModal');
-    if (modal) {
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-
-      function close() {
-        modal.classList.remove('active');
-        document.body.style.overflow = '';
-        document.removeEventListener('keydown', escHandler);
-      }
-
-      function escHandler(e) { if (e.key === 'Escape') close(); }
-      
-      const closeBtn = modal.querySelector('.close-cv-btn');
-      const backdrop = modal.querySelector('.cv-modal-backdrop');
-      
-      closeBtn.addEventListener('click', close);
-      backdrop.addEventListener('click', close);
-      document.addEventListener('keydown', escHandler);
-    }
-  }
-
-  // Wait a bit to ensure DOM is fully ready
-  setTimeout(() => {
-    const cvBtn = document.querySelector('.open-cv-btn');
-    if (cvBtn) {
-      cvBtn.addEventListener('click', openCV);
-    }
-  }, 100);
 }
 
 loadData();
