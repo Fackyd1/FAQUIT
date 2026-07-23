@@ -88,15 +88,6 @@ function render() {
           <h2>Releases</h2>
         </div>
         <div class="release-list">
-          ${ReleaseCard({ 
-            release: {
-              title: 'Web CV',
-              release_type: 'Project',
-              description: 'A premium immersive web experience showcasing my full-stack development skills, portfolio, and professional journey.',
-              release_date: '2026',
-              github_url: 'https://github.com/Fackyd1/FAQUIT'
-            }
-          })}
           ${site.releases.map((release) => ReleaseCard({ release })).join('')}
         </div>
       </section>
