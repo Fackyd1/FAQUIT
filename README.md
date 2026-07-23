@@ -19,7 +19,7 @@ FAQUIT now runs as a music-first platform with a Node.js/Express API, a MySQL-ba
 
 ## Admin
 - Public site: http://localhost:5173
-- Admin login: http://localhost:5173/admin
+- Admin login removed from public documentation
 - Default seeded admin user:
   - username: `faquit`
   - password: `faquit123`
