@@ -236,6 +236,10 @@ h1 {
   width: 100%;
 }
 
+.cv-wrapper {
+  width: 100%;
+}
+
 .cv-content {
   width: 100%;
   background: rgba(255,255,255,.07);
@@ -267,8 +271,8 @@ h1 {
   margin-bottom: 28px;
 }
 
-.cv-section:last-child {
-  margin-bottom: 0;
+.cv-section:last-of-type {
+  margin-bottom: 20px;
 }
 
 .cv-eyebrow {
@@ -338,6 +342,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 10px;
+  margin-bottom: 12px;
 }
 
 .skill-tag {
@@ -360,6 +365,113 @@ h1 {
   border-color: rgba(255,255,255,0.24);
   transform: translateY(-2px);
   box-shadow: 0 8px 16px rgba(83, 218, 255, 0.16);
+}
+
+.open-cv-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--punk-cyan), var(--punk-violet));
+  color: #081018;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: all .3s ease;
+  box-shadow: 0 8px 24px rgba(83, 218, 255, 0.24);
+  width: 100%;
+  justify-content: center;
+}
+
+.open-cv-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(83, 218, 255, 0.36);
+}
+
+.cv-icon {
+  font-size: 1.1rem;
+}
+
+/* CV Modal */
+.cv-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn .3s ease;
+}
+
+.cv-modal.active {
+  display: flex;
+}
+
+.cv-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4,1,10,0.85);
+  backdrop-filter: blur(4px);
+}
+
+.cv-modal-content {
+  position: relative;
+  width: min(95vw, 1000px);
+  height: min(90vh, 800px);
+  background: rgba(20, 10, 30, 0.95);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+  transform: perspective(1200px) rotateX(6deg) rotateY(-6deg);
+  overflow: hidden;
+  animation: popIn .3s ease;
+}
+
+.close-cv-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255,255,255,0.06);
+  color: #f7f4ff;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all .2s ease;
+  z-index: 10001;
+}
+
+.close-cv-btn:hover {
+  background: rgba(255,255,255,0.12);
+  transform: rotate(90deg);
+}
+
+.cv-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: transparent;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateX(10deg) rotateY(-10deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1200px) rotateX(6deg) rotateY(-6deg) scale(1);
+  }
 }
 
 @keyframes fadeIn {
